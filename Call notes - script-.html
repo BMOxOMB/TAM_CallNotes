@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="enviroment">Enviroment:</label>
+        <input type="text" id="enviroment" name="enviroment" required>
+
+        <label for="customerRep">Customer Rep:</label>
+        <input type="text" id="custName" name="customerRep" required>
+        
+        <label for="problem">Problem:</label>
+        <input type="textarea" id="problem" name="problem" required>
+        
+        <label for="actionTaken">Action Taken:</label>
+        <input type="textarea" id="actionTaken" name="actionTaken" required>
+
+        <label for="actionPlan">Action Plan:</label>
+        <input type="text" id="actionPlan" name="actionPlan" required>
+
+        <label for="testCase">Test Case:</label>
+        <input type="text" id="testCase" name="testCase" value="N/A">
+
+        <label for="typeOfSev">Severity:</label>
+        <select id="typeOfIssue" name="typeOfIssue">
+          <option value="">Select the type of severity</option>
+          <option value="sv1">Severity 1</option>
+          <option value="sv2">Severity 2</option>
+          <option value="sv3">Severity 3</option>
+          <option value="sv4">Severity 4</option>
+        </select>
+
+        <label for="typeOfIssue">Issue:</label>
+        <select id="typeOfIssue" name="typeOfIssue">
+          <option value="">Select the type of issue the customer has</option>
+          <option value="software">Software</option>
+          <option value="hardware">Hardware</option>
+        </select>
+        
+        <label for="entitlement">Account entitlement:</label>
+        <select id="entitlement" name="entitlement">
+          <option value="">Select the account entitlement</option>
+          <option value="ETS">ETS</option>
+          <option value="expertCare">Expert Care</option>
+          <option value="proactive">Proactive</option>
+          <option value="base">Base Support</option>
+          <option value="passport">Passport</option>
+          <option value="other">Other</option>
+        </select>
+        
+        <button type="button" onclick= "copyClipboard();">Copy form data to clipboard</button>
+        <button type="reset" onClick="window.location.reload();">Done I am with a new customer now</button>
+    </form>
+      
+      <style>
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-family: sans-serif;
+          padding: 20px;
+          background-color: #f0f0f0;
+        }
+        
+        input, select, button {
+          margin: 10px;
+          padding: 10px;
+          border-radius: 5px;
+          border: none;
+          font-size: 16px;
+          width: 100%;
+          max-width: 400px;
+        }
+        
+        input:focus, select:focus {
+          outline: none;
+          box-shadow: 0 0 5px #0077ff;
+        }
+        
+        button[type="button"] {
+          background-color: #0077ff;
+          color: #fff;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        button[type="reset"]{
+          background-color: #ff1500;
+          color: #fff;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        button[type="reset"]:hover, button[type="button"]:hover {
+          background-color: #52f624;
+        }
+      </style>
+      
+      <script>
+        function copyClipboard() {
+  // Get the values of the form fields
+  var environment = document.getElementById("enviroment").value;
+  var customerRep = document.getElementById("custName").value;
+  var problem = document.getElementById("problem").value;
+  var actionTaken = document.getElementById("actionTaken").value;
+  var actionPlan = document.getElementById("actionPlan").value;
+  var testCase = document.getElementById("testCase").value;
+  var severity = document.getElementById("typeOfIssue").value;
+  var issue = document.getElementById("typeOfIssue").value;
+  var entitlement = document.getElementById("entitlement").value;
+
+  // Combine the form data into a single string
+  var formData = "Environment: " + environment + "\n" +
+                 "Customer Rep: " + customerRep + "\n" +
+                 "Problem: " + problem + "\n" +
+                 "Action Taken: " + actionTaken + "\n" +
+                 "Action Plan: " + actionPlan + "\n" +
+                 "Test Case: " + testCase + "\n" +
+                 "Severity: " + severity + "\n" +
+                 "Issue: " + issue + "\n" +
+                 "Entitlement: " + entitlement;
+
+  // Create a temporary textarea element and set its value to the form data string
+  var tempTextarea = document.createElement("textarea");
+  tempTextarea.value = formData;
+
+  // Append the textarea to the document body
+  document.body.appendChild(tempTextarea);
+
+  // Select the contents of the textarea
+  tempTextarea.select();
+
+  // Copy the selected text to the clipboard
+  document.execCommand("copy");
+
+  // Remove the temporary textarea from the document body
+  document.body.removeChild(tempTextarea);
+
+  // Alert the user that the form data has been copied to the clipboard
+  alert("Form data copied to clipboard!");
+}
+      </script>
+</script>
+</body>
+</html>
